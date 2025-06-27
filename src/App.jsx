@@ -1,15 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import { Container, Typography } from '@mui/material'
 import './App.css'
-import VirtualTable from './components/VirtualizationTable.jsx'
+import MuiVirtualTable from './components/VirtualizationTable.jsx'
+
+const theme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#1976d2',
+    },
+    secondary: {
+      main: '#dc004e',
+    },
+    background: {
+      default: '#f5f5f5',
+    },
+  },
+  typography: {
+    h4: {
+      fontWeight: 600,
+      color: '#1976d2',
+    },
+  },
+  components: {
+    MuiTableCell: {
+      styleOverrides: {
+        head: {
+          backgroundColor: '#1976d2',
+          color: '#ffffff',
+          fontWeight: 600,
+        },
+      },
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <h1 className = 'Heading'>Virtualized User Table</h1>
-      <VirtualTable />
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Container maxWidth="xl" sx={{ py: 4 }}>
+        <Typography variant="h4" component="h1" align="center" gutterBottom>
+          Virtualized User Table
+        </Typography>
+        <MuiVirtualTable />
+      </Container>
+    </ThemeProvider>
   )
 }
 
