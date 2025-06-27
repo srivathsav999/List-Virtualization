@@ -7,7 +7,7 @@ import VirtualTable from './components/VirtualizationTable.jsx'
 function App() {
   return (
     <div className="App">
-      <h1>Virtualized User Table</h1>
+      <h1 className = 'Heading'>Virtualized User Table</h1>
       <VirtualTable />
     </div>
   )
