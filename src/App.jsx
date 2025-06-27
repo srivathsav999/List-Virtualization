@@ -4,6 +4,7 @@ import {
   createTheme,
   CssBaseline,
   Container,
+  Switch,
   Typography,
   IconButton,
 } from '@mui/material';
@@ -60,6 +61,7 @@ function App() {
           <Typography variant="h4" component="h1" align="center" gutterBottom>
             Virtualized User Table
           </Typography>
+          <Switch checked={mode === 'dark'} onChange={toggleTheme} />
           <IconButton onClick={toggleTheme} color="inherit" sx={{ ml: 2 }}>
             {mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
           </IconButton>
