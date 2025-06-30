@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import {
   ThemeProvider,
   createTheme,
@@ -11,12 +11,19 @@ import {
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import MuiVirtualTable from './components/VirtualizationTable.jsx';
-
-
+import ShadCN from './components/ShadCN';
 import './App.css';
 
 function App() {
   const [mode, setMode] = useState('light');
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch('https://fakerapi.it/api/v1/users?_quantity=100')
+      .then(res => res.json())
+      .then(data => setUsers(data.data))
+      .catch(err => console.error(err));
+  }, []);
 
   const theme = useMemo(() => createTheme({
     palette: {
@@ -67,6 +74,9 @@ function App() {
           <IconButton onClick={toggleTheme} color="inherit" sx={{ ml: 2 }}>
             {mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
           </IconButton>
+        </div>
+        <div>
+        <ShadCN users={users} />
         </div>
         <MuiVirtualTable />
       </Container>
