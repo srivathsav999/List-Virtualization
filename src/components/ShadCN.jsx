@@ -51,7 +51,7 @@ import {
   
     return (
         <>
-        <div><h1>ShadCN Datatable</h1></div>
+        <div><h1 className="text-3xl font-bold text-gray-800 tracking-tight mb-4">ShadCN Datatable</h1></div>
       <div className="w-full space-y-0 pb-8">
         <div className="rounded-t-lg border border-b-0 bg-muted/30 sticky top-0 z-10 shadow-sm">
           <Table className="w-full table-fixed">
